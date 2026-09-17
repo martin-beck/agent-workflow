@@ -1,0 +1,53 @@
+# Copyright (C) Huawei Technologies Co., Ltd. 2026. All rights reserved.
+# SPDX-License-Identifier: MIT
+
+schema: 1
+project:
+  name: agent-workflow
+  title: Agent Workflow
+  kind: umbrella
+  organization: martin-beck
+  discovery_rule: "All public repositories named agent-workflow-* are family candidates; only entries below are pipeline inputs."
+
+# Product source remains in these repositories. Their state repositories are
+# coordination authorities and are intentionally not vendored here.
+children:
+  - name: agent-workflow-coordinator
+    title: Agent Workflow Coordinator
+    repository: martin-beck/agent-workflow-coordinator
+    url: https://github.com/martin-beck/agent-workflow-coordinator
+    state_repository: martin-beck/agent-workflow-coordinator-state
+    owns:
+      - task lifecycle and claims
+      - dependencies, leases, revisions, and durable coordination
+    consult_when: "Any task is claimed, updated, released, reconciled, or coordinated."
+
+  - name: agent-workflow-quality
+    title: Agent Workflow Quality
+    repository: martin-beck/agent-workflow-quality
+    url: https://github.com/martin-beck/agent-workflow-quality
+    state_repository: martin-beck/agent-workflow-quality-state
+    owns:
+      - quality requirements and profiles
+      - gates, adapters, and evidence contracts
+    consult_when: "A change has quality, testing, assurance, evidence, release, or policy impact."
+
+  - name: agent-workflow-guidance
+    title: Agent Workflow Guidance
+    repository: martin-beck/agent-workflow-guidance
+    url: https://github.com/martin-beck/agent-workflow-guidance
+    state_repository: martin-beck/agent-workflow-guidance-state
+    owns:
+      - oracle escalation and alternatives
+      - durable decisions and reusable guidance
+    consult_when: "Intent is materially ambiguous, trade-offs need a decision, or dependent work may be constrained."
+
+pipeline:
+  required_start: [manifest, all_child_instructions, applicable_child_state]
+  order:
+    - coordinator: establish task, owner, dependencies, and revision
+    - quality: determine applicable requirements, gates, and evidence
+    - guidance: resolve material ambiguity or trade-offs before implementation
+    - children: execute owner-specific contracts and checks
+    - coordinator: record durable progress and completion
+  future_child_rule: "Add a distinct child entry here after reviewing ownership overlap and its public instructions."
