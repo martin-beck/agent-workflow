@@ -42,6 +42,17 @@ children:
       - durable decisions and reusable guidance
     consult_when: "Intent is materially ambiguous, trade-offs need a decision, or dependent work may be constrained."
 
+  - name: agent-workflow-tui
+    title: Agent Workflow TUI
+    repository: martin-beck/agent-workflow-tui
+    url: https://github.com/martin-beck/agent-workflow-tui
+    state_repository: martin-beck/agent-workflow-tui-state
+    owns:
+      - human-in-the-loop terminal presentation
+      - Markdown document and AR-graph highlight rendering
+      - revision-bound TUI input and response adapters
+    consult_when: "A live human decision session, proposal input, document highlight, or TUI transport is required."
+
 pipeline:
   required_start: [manifest, all_child_instructions, applicable_child_state]
   order:
