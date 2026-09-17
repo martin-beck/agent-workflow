@@ -20,6 +20,7 @@ children:
     owns:
       - task lifecycle and claims
       - dependencies, leases, revisions, and durable coordination
+      - persistence of accepted TUI outcomes into AR state and revision history
     consult_when: "Any task is claimed, updated, released, reconciled, or coordinated."
 
   - name: agent-workflow-quality
@@ -51,7 +52,7 @@ children:
       - human-in-the-loop terminal presentation
       - Markdown document and AR-graph highlight rendering
       - revision-bound TUI input and response adapters
-    consult_when: "A live human decision session, proposal input, document highlight, or TUI transport is required."
+    consult_when: "A live human decision session, proposal input, document highlight, or TUI transport is required; use the versioned Coordinator/TUI bridge for trigger and persistence mapping."
 
 pipeline:
   required_start: [manifest, all_child_instructions, applicable_child_state]
