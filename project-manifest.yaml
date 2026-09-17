@@ -42,12 +42,24 @@ children:
       - durable decisions and reusable guidance
     consult_when: "Intent is materially ambiguous, trade-offs need a decision, or dependent work may be constrained."
 
+  - name: agent-workflow-tui
+    title: Agent Workflow TUI
+    repository: martin-beck/agent-workflow-tui
+    url: https://github.com/martin-beck/agent-workflow-tui
+    state_repository: martin-beck/agent-workflow-tui-state
+    owns:
+      - interactive terminal rendering and input handling
+      - AR-bound discussion, decision, and conflict-reconciliation sessions
+      - Coordinator, AWG, and AWQ client adapters
+    consult_when: "An AR requires human interaction, a decision packet must be rendered, or a TUI response must return to an AR."
+
 pipeline:
   required_start: [manifest, all_child_instructions, applicable_child_state]
   order:
     - coordinator: establish task, owner, dependencies, and revision
     - quality: determine applicable requirements, gates, and evidence
     - guidance: resolve material ambiguity or trade-offs before implementation
+    - tui: render and collect revision-bound interaction through child adapters
     - children: execute owner-specific contracts and checks
     - coordinator: record durable progress and completion
   future_child_rule: "Add a distinct child entry here after reviewing ownership overlap and its public instructions."
