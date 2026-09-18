@@ -39,8 +39,8 @@ def check() -> None:
     expected = {
         "agent-workflow-tui": ("v0.1.2", "5f68f8e86586a4c8036a180eb35c42fab82df843"),
         "agent-workflow-coordinator": (
-            "v0.3.13",
-            "bc5d96b74a443466dcaeb352431f2cbf077320c8",
+            "v0.3.14",
+            "2666c9d7a56ce02340e1b4b09344a227936a34cf",
         ),
         "agent-workflow-guidance": (
             "source",
