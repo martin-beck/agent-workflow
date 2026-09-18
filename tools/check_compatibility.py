@@ -37,7 +37,7 @@ def check() -> None:
         raise ValueError("unsupported Guidance trigger schema")
 
     expected = {
-        "agent-workflow-ui": ("v0.4.1", "4b66ab6d21aec40046caf24a59bf90d280a749a3"),
+        "agent-workflow-ui": ("v0.4.2", "6f8d6584897662be588e77c0393c74f4a0a03d6d"),
         "agent-workflow-coordinator": (
             "v0.3.22",
             "da7faa08a40513254179429c9c6d5c43e980ea48",
