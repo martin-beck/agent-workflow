@@ -18,7 +18,7 @@ It currently covers:
 - [Agent Workflow Coordinator](https://github.com/martin-beck/agent-workflow-coordinator): task lifecycle, claims, dependencies, durable state, and coordination authority.
 - [Agent Workflow Quality](https://github.com/martin-beck/agent-workflow-quality): quality requirements, profiles, gates, adapters, and evidence contracts.
 - [Agent Workflow Guidance](https://github.com/martin-beck/agent-workflow-guidance): oracle escalation, decision records, alternatives, and reusable guidance.
-- [Agent Workflow TUI](https://github.com/martin-beck/agent-workflow-tui): interactive terminal rendering and revision-bound discussion, decision, and conflict-reconciliation sessions.
+- [Agent Workflow UI](https://github.com/martin-beck/agent-workflow-ui): adaptive Linux GUI/TUI rendering and revision-bound discussion, decision, and conflict-reconciliation sessions.
 
 Each child project owns its implementation and its separate state repository.
 The state repositories are listed in the manifest so an agent can locate the
