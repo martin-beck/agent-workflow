@@ -77,8 +77,8 @@ compatibility:
     commit: 6c6b3c607dd1038d0f2edf817f516a4921695564
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
-    release: v0.3.18
-    commit: 45d8686ae42234f3712c18f46971f173046c3cc2
+    release: v0.3.19
+    commit: 76830e42a4c63bc56d35bfdad06d777116ba9964
   guidance_source:
     repository: martin-beck/agent-workflow-guidance
     release: v0.1.1
