@@ -74,7 +74,7 @@ compatibility:
   ui_release:
     repository: martin-beck/agent-workflow-ui
     release: v0.4.1
-    commit: 4b66ab6f6dbda4a2dd8007076bf4e1c0d0b7e790
+    commit: 4b66ab6d21aec40046caf24a59bf90d280a749a3
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
     release: v0.3.22
