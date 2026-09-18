@@ -43,11 +43,11 @@ children:
       - durable decisions and reusable guidance
     consult_when: "Intent is materially ambiguous, trade-offs need a decision, or dependent work may be constrained."
 
-  - name: agent-workflow-tui
-    title: Agent Workflow TUI
-    repository: martin-beck/agent-workflow-tui
-    url: https://github.com/martin-beck/agent-workflow-tui
-    state_repository: martin-beck/agent-workflow-tui-state
+  - name: agent-workflow-ui
+    title: Agent Workflow UI
+    repository: martin-beck/agent-workflow-ui
+    url: https://github.com/martin-beck/agent-workflow-ui
+    state_repository: martin-beck/agent-workflow-ui-state
     owns:
       - interactive terminal rendering and input handling
       - AR-bound discussion, decision, and conflict-reconciliation sessions
@@ -60,7 +60,7 @@ pipeline:
     - coordinator: establish task, owner, dependencies, and revision
     - quality: determine applicable requirements, gates, and evidence
     - guidance: resolve material ambiguity or trade-offs before implementation
-    - tui: render and collect revision-bound interaction through child adapters
+    - ui: render and collect revision-bound interaction through child adapters
     - children: execute owner-specific contracts and checks
     - coordinator: record durable progress and completion
   future_child_rule: "Add a distinct child entry here after reviewing ownership overlap and its public instructions."
@@ -71,10 +71,10 @@ pipeline:
 compatibility:
   bridge_contract_version: "1.0"
   guidance_trigger_schema_version: "1.0"
-  tui_release:
-    repository: martin-beck/agent-workflow-tui
-    release: v0.1.7
-    commit: 6c6b3c607dd1038d0f2edf817f516a4921695564
+  ui_release:
+    repository: martin-beck/agent-workflow-ui
+    release: v0.2.0
+    commit: 6bd7b19452634516e066947b7375a6be0b2354f9
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
     release: v0.3.19
@@ -97,6 +97,6 @@ compatibility:
     - repository: martin-beck/agent-workflow-guidance
       path: schema/agent-decision-routing.schema.json
       schema_version: "1.0"
-    - repository: martin-beck/agent-workflow-tui
+    - repository: martin-beck/agent-workflow-ui
       path: schemas/coordinator-tui-bridge.schema.json
       schema_version: "1.0"
