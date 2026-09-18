@@ -48,6 +48,17 @@ The manifest is intentionally explicit and reviewable. Future family members
 become pipeline inputs by adding a registry entry; agents must not silently
 ignore an entry or infer ownership from repository names alone.
 
+## Compatibility lock
+
+The manifest's `compatibility` block is the reviewed cross-project lock for
+the current bridge. It pins the TUI release, the Coordinator release, and the
+exact Guidance and Quality source commits that define the corresponding
+schemas and evidence contracts. Run `python3 tools/check_compatibility.py`
+before starting a coordinated session. CI additionally verifies that every
+immutable commit and release tag still exists. A compatibility update must
+change the lock and its CI evidence together; agents must not silently mix
+TUI, Coordinator, Guidance, or Quality revisions.
+
 ## Licensing
 
 Licensed under the MIT License. See [LICENSE](LICENSE).
