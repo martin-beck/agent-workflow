@@ -37,14 +37,14 @@ def check() -> None:
         raise ValueError("unsupported Guidance trigger schema")
 
     expected = {
-        "agent-workflow-tui": ("v0.1.5", "c9032a952498c15ab407b2ddcf63d14e5b6906e6"),
+        "agent-workflow-tui": ("v0.1.6", "9cc9b0270bf5533c04cfce2d5b28d75d5f12f02c"),
         "agent-workflow-coordinator": (
-            "v0.3.17",
-            "fe68c24335f7fbdfa542b32fcf89081beeb65f98",
+            "v0.3.18",
+            "45d8686ae42234f3712c18f46971f173046c3cc2",
         ),
         "agent-workflow-guidance": (
-            "v0.1.0",
-            "9b044ebc930751ba23c60ecd7d8f7c30ca631609",
+            "v0.1.1",
+            "c475a790f72fa04ce6e7c0d5383a688e45cf6a69",
         ),
         "agent-workflow-quality": (
             "v0.35.0-bridge.1",
@@ -62,6 +62,7 @@ def check() -> None:
     required = {
         "schema/human-decision-trigger.schema.json": "1.0",
         "schema/decision-request.schema.json": "0.2",
+        "schema/agent-decision-routing.schema.json": "1.0",
         "schemas/coordinator-tui-bridge.schema.json": "1.0",
     }
     for path, version in required.items():

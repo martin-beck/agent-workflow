@@ -73,16 +73,16 @@ compatibility:
   guidance_trigger_schema_version: "1.0"
   tui_release:
     repository: martin-beck/agent-workflow-tui
-    release: v0.1.5
-    commit: c9032a952498c15ab407b2ddcf63d14e5b6906e6
+    release: v0.1.6
+    commit: 9cc9b0270bf5533c04cfce2d5b28d75d5f12f02c
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
-    release: v0.3.17
-    commit: fe68c24335f7fbdfa542b32fcf89081beeb65f98
+    release: v0.3.18
+    commit: 45d8686ae42234f3712c18f46971f173046c3cc2
   guidance_source:
     repository: martin-beck/agent-workflow-guidance
-    release: v0.1.0
-    commit: 9b044ebc930751ba23c60ecd7d8f7c30ca631609
+    release: v0.1.1
+    commit: c475a790f72fa04ce6e7c0d5383a688e45cf6a69
   quality_source:
     repository: martin-beck/agent-workflow-quality
     release: v0.35.0-bridge.1
@@ -94,6 +94,9 @@ compatibility:
     - repository: martin-beck/agent-workflow-guidance
       path: schema/decision-request.schema.json
       schema_version: "0.2"
+    - repository: martin-beck/agent-workflow-guidance
+      path: schema/agent-decision-routing.schema.json
+      schema_version: "1.0"
     - repository: martin-beck/agent-workflow-tui
       path: schemas/coordinator-tui-bridge.schema.json
       schema_version: "1.0"
