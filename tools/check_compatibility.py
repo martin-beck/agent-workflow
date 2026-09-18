@@ -39,12 +39,12 @@ def check() -> None:
     expected = {
         "agent-workflow-ui": ("v0.2.4", "eeb56946722299ed8ce165f0e5194da84035dac7"),
         "agent-workflow-coordinator": (
-            "v0.3.19",
-            "76830e42a4c63bc56d35bfdad06d777116ba9964",
+            "v0.3.21",
+            "9237c2d0b250f20138eb764502fdf52588a66c57",
         ),
         "agent-workflow-guidance": (
-            "v0.1.1",
-            "c475a790f72fa04ce6e7c0d5383a688e45cf6a69",
+            "v0.1.2",
+            "4cc6fdebed62cfb8d2f05224d8438f2e0da6e035",
         ),
         "agent-workflow-quality": (
             "v0.35.0-bridge.1",
