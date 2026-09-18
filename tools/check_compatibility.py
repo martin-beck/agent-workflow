@@ -43,11 +43,11 @@ def check() -> None:
             "2666c9d7a56ce02340e1b4b09344a227936a34cf",
         ),
         "agent-workflow-guidance": (
-            "source",
+            "v0.1.0",
             "9b044ebc930751ba23c60ecd7d8f7c30ca631609",
         ),
         "agent-workflow-quality": (
-            "source",
+            "v0.35.0-bridge.1",
             "8ec460ec99baf8061d1644a2532b5b9beb47b75b",
         ),
     }
