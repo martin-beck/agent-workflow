@@ -32,5 +32,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git ls-remote https://github.com/martin-beck/agent-workflow-tui.git 'refs/tags/v0.1.2^{}' | awk '{print $1}')" = 5f68f8e86586a4c8036a180eb35c42fab82df843
-          test "$(git ls-remote https://github.com/martin-beck/agent-workflow-coordinator.git 'refs/tags/v0.3.13^{}' | awk '{print $1}')" = bc5d96b74a443466dcaeb352431f2cbf077320c8
+          tag_commit() {
+            local repository=$1 tag=$2 expected=$3 actual
+            actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}^{}" | awk '{print $1}')
+            test -n "${actual}" || actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}" | awk '{print $1}')
+            test "${actual}" = "${expected}"
+          }
+          tag_commit martin-beck/agent-workflow-tui v0.1.2 5f68f8e86586a4c8036a180eb35c42fab82df843
+          tag_commit martin-beck/agent-workflow-coordinator v0.3.13 bc5d96b74a443466dcaeb352431f2cbf077320c8
