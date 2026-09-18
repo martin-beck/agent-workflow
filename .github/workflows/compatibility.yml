@@ -1,0 +1,35 @@
+name: Cross-project compatibility
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lock:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate reviewed compatibility lock
+        run: python3 tools/check_compatibility.py
+      - name: Verify immutable source pins exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          while read -r repository commit; do
+            git ls-remote --exit-code "https://github.com/${repository}.git" "${commit}^{commit}" >/dev/null
+          done <<'PINS'
+          martin-beck/agent-workflow-tui 5f68f8e86586a4c8036a180eb35c42fab82df843
+          martin-beck/agent-workflow-coordinator bc5d96b74a443466dcaeb352431f2cbf077320c8
+          martin-beck/agent-workflow-guidance 9b044ebc930751ba23c60ecd7d8f7c30ca631609
+          martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
+          PINS
+      - name: Verify release tags used by the lock
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git ls-remote https://github.com/martin-beck/agent-workflow-tui.git 'refs/tags/v0.1.2^{}' | awk '{print $1}')" = 5f68f8e86586a4c8036a180eb35c42fab82df843
+          test "$(git ls-remote https://github.com/martin-beck/agent-workflow-coordinator.git 'refs/tags/v0.3.13^{}' | awk '{print $1}')" = bc5d96b74a443466dcaeb352431f2cbf077320c8

@@ -64,3 +64,36 @@ pipeline:
     - children: execute owner-specific contracts and checks
     - coordinator: record durable progress and completion
   future_child_rule: "Add a distinct child entry here after reviewing ownership overlap and its public instructions."
+
+# These are the reviewed, mutually compatible inputs for the current bridge.
+# Source commits are immutable audit anchors; releases are the install/runtime
+# selectors used by agents.  Update this block only with a compatibility PR.
+compatibility:
+  bridge_contract_version: "1.0"
+  guidance_trigger_schema_version: "1.0"
+  tui_release:
+    repository: martin-beck/agent-workflow-tui
+    release: v0.1.2
+    commit: 5f68f8e86586a4c8036a180eb35c42fab82df843
+  coordinator_release:
+    repository: martin-beck/agent-workflow-coordinator
+    release: v0.3.13
+    commit: bc5d96b74a443466dcaeb352431f2cbf077320c8
+  guidance_source:
+    repository: martin-beck/agent-workflow-guidance
+    release: source
+    commit: 9b044ebc930751ba23c60ecd7d8f7c30ca631609
+  quality_source:
+    repository: martin-beck/agent-workflow-quality
+    release: source
+    commit: 8ec460ec99baf8061d1644a2532b5b9beb47b75b
+  required_contracts:
+    - repository: martin-beck/agent-workflow-guidance
+      path: schema/human-decision-trigger.schema.json
+      schema_version: "1.0"
+    - repository: martin-beck/agent-workflow-guidance
+      path: schema/decision-request.schema.json
+      schema_version: "0.2"
+    - repository: martin-beck/agent-workflow-tui
+      path: schemas/coordinator-tui-bridge.schema.json
+      schema_version: "1.0"
