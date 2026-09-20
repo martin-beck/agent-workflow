@@ -73,8 +73,8 @@ compatibility:
   guidance_trigger_schema_version: "1.0"
   ui_release:
     repository: martin-beck/agent-workflow-ui
-    release: v0.5.1
-    commit: e97c9eeb044e9f44f0a13024720f55dcc04419b8
+    release: v0.5.2
+    commit: 927af2c8b9e6f8d1d07eceb0ad5562e8cc39b5d5
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
     release: v0.3.22
