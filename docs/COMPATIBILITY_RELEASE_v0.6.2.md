@@ -1,4 +1,4 @@
-# Agent Workflow family compatibility release v0.6.1
+# Agent Workflow family compatibility release v0.6.2
 
 This compatibility checkpoint selects immutable releases and source commits
 for the four public family contracts. The lock in `project-manifest.yaml` and
@@ -7,7 +7,7 @@ umbrella release is consumed.
 
 | Project | Release | Immutable commit | Qualification boundary |
 | --- | --- | --- | --- |
-| agent-workflow-ui | v0.6.1 | `b33fb5a757e8ba97d525adbb9eae6a9a0b7d8b01` | Linux POSIX TUI and Windows native x64; ARM64 unqualified |
+| agent-workflow-ui | v0.6.2 | `3ceee11e302be267f8c0e83cfbac47345e8b8162` | Linux POSIX TUI and Windows native x64; ARM64 unqualified |
 | agent-workflow-coordinator | v0.3.22 | `da7faa08a40513254179429c9c6d5c43e980ea48` | Revision, event, and durable-state contract only |
 | agent-workflow-guidance | v0.1.2 | `4cc6fdebed62cfb8d2f05224d8438f2e0da6e035` | Trigger, request, and routing schemas |
 | agent-workflow-quality | v0.35.0-bridge.1 | `8ec460ec99baf8061d1644a2532b5b9beb47b75b` | Evidence and gate contract; not a runtime qualification claim |
