@@ -51,8 +51,8 @@ def check() -> None:
             "8ec460ec99baf8061d1644a2532b5b9beb47b75b",
         ),
         "agent-workflow-runtime": (
-            "v0.1.6",
-            "1f1ca631f97229c55d248e91ca0d081cff7b7b0c",
+            "v0.1.7",
+            "1f87eaec3c4dcb23bbb333bef4e1ff94638dbc91",
         ),
     }
     for repository, (release, commit) in expected.items():

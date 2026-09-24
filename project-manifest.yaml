@@ -90,8 +90,8 @@ compatibility:
     commit: f89103b70d18642bef9e785214eb5ea790a53627
   runtime_release:
     repository: martin-beck/agent-workflow-runtime
-    release: v0.1.6
-    commit: 1f1ca631f97229c55d248e91ca0d081cff7b7b0c
+    release: v0.1.7
+    commit: 1f87eaec3c4dcb23bbb333bef4e1ff94638dbc91
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
     release: v0.3.22
