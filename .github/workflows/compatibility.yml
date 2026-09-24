@@ -23,10 +23,11 @@ jobs:
             curl --fail --silent --show-error --location \
               "https://api.github.com/repos/${repository}/commits/${commit}" >/dev/null
           done <<'PINS'
-          martin-beck/agent-workflow-tui 5f68f8e86586a4c8036a180eb35c42fab82df843
-          martin-beck/agent-workflow-coordinator 2666c9d7a56ce02340e1b4b09344a227936a34cf
-          martin-beck/agent-workflow-guidance 9b044ebc930751ba23c60ecd7d8f7c30ca631609
+          martin-beck/agent-workflow-ui f89103b70d18642bef9e785214eb5ea790a53627
+          martin-beck/agent-workflow-coordinator da7faa08a40513254179429c9c6d5c43e980ea48
+          martin-beck/agent-workflow-guidance 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
+          martin-beck/agent-workflow-runtime a905980cae83e6ad037c7b287dbc5f9ceee376de
           PINS
       - name: Verify release tags used by the lock
         shell: bash
@@ -38,7 +39,8 @@ jobs:
             test -n "${actual}" || actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}" | awk '{print $1}')
             test "${actual}" = "${expected}"
           }
-          tag_commit martin-beck/agent-workflow-tui v0.1.2 5f68f8e86586a4c8036a180eb35c42fab82df843
-          tag_commit martin-beck/agent-workflow-coordinator v0.3.14 2666c9d7a56ce02340e1b4b09344a227936a34cf
-          tag_commit martin-beck/agent-workflow-guidance v0.1.0 9b044ebc930751ba23c60ecd7d8f7c30ca631609
+          tag_commit martin-beck/agent-workflow-ui v0.6.0 f89103b70d18642bef9e785214eb5ea790a53627
+          tag_commit martin-beck/agent-workflow-coordinator v0.3.22 da7faa08a40513254179429c9c6d5c43e980ea48
+          tag_commit martin-beck/agent-workflow-guidance v0.1.2 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           tag_commit martin-beck/agent-workflow-quality v0.35.0-bridge.1 8ec460ec99baf8061d1644a2532b5b9beb47b75b
+          tag_commit martin-beck/agent-workflow-runtime v0.1.2 a905980cae83e6ad037c7b287dbc5f9ceee376de
