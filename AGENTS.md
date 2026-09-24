@@ -16,6 +16,11 @@ coordination state of every affected child project:
   evidence policy.
 - `agent-workflow-guidance` owns oracle escalation and durable decision
   guidance.
+- `agent-workflow-ui` owns interactive rendering and revision-bound human
+  interaction sessions.
+- `agent-workflow-runtime` owns bounded agent execution, worker supervision
+  and recovery, and integration across child contracts; it does not replace
+  Coordinator, Quality, Guidance, or UI authority.
 
 Use each child project's own state repository and `handoffctl`/quality/guidance
 contracts. Keep this repository's manifest as links, ownership boundaries,

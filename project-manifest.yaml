@@ -54,6 +54,18 @@ children:
       - Coordinator, AWG, and AWQ client adapters
     consult_when: "An AR requires human interaction, a decision packet must be rendered, or a TUI response must return to an AR; use the versioned Coordinator/TUI bridge for trigger and persistence mapping."
 
+  - name: agent-workflow-runtime
+    title: Agent Workflow Runtime
+    repository: martin-beck/agent-workflow-runtime
+    url: https://github.com/martin-beck/agent-workflow-runtime
+    state_repository: martin-beck/agent-workflow-runtime-state
+    owns:
+      - provider-neutral agent session execution and worker supervision
+      - capability, worktree, resource, timeout, and recovery enforcement
+      - integration across Coordinator, Quality, Guidance, and UI contracts
+      - execution evidence and publication observation bridges
+    consult_when: "A task launches or supervises agent sessions, enforces execution boundaries, recovers workers, or integrates provider and authority contracts."
+
 pipeline:
   required_start: [manifest, all_child_instructions, applicable_child_state]
   order:
@@ -61,6 +73,7 @@ pipeline:
     - quality: determine applicable requirements, gates, and evidence
     - guidance: resolve material ambiguity or trade-offs before implementation
     - ui: render and collect revision-bound interaction through child adapters
+    - runtime: execute approved work through bounded sessions and integrate child-owned contracts
     - children: execute owner-specific contracts and checks
     - coordinator: record durable progress and completion
   future_child_rule: "Add a distinct child entry here after reviewing ownership overlap and its public instructions."
@@ -75,6 +88,10 @@ compatibility:
     repository: martin-beck/agent-workflow-ui
     release: v0.6.0
     commit: f89103b70d18642bef9e785214eb5ea790a53627
+  runtime_release:
+    repository: martin-beck/agent-workflow-runtime
+    release: v0.1.0
+    commit: c3be277bc996a7470a8c22ee5846259ca030beca
   coordinator_release:
     repository: martin-beck/agent-workflow-coordinator
     release: v0.3.22
