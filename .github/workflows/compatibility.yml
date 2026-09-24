@@ -4,41 +4,27 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  lock:
+  probe:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - name: Validate reviewed compatibility lock
-        run: python3 tools/check_compatibility.py
-      - name: Verify immutable source pins exist
-        shell: bash
-        run: |
-          set -euo pipefail
-          while read -r repository commit; do
-            curl --fail --silent --show-error --location \
-              "https://api.github.com/repos/${repository}/commits/${commit}" >/dev/null
-          done <<'PINS'
-          martin-beck/agent-workflow-tui 5f68f8e86586a4c8036a180eb35c42fab82df843
-          martin-beck/agent-workflow-coordinator 2666c9d7a56ce02340e1b4b09344a227936a34cf
-          martin-beck/agent-workflow-guidance 9b044ebc930751ba23c60ecd7d8f7c30ca631609
-          martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
-          PINS
-      - name: Verify release tags used by the lock
-        shell: bash
-        run: |
-          set -euo pipefail
-          tag_commit() {
-            local repository=$1 tag=$2 expected=$3 actual
-            actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}^{}" | awk '{print $1}')
-            test -n "${actual}" || actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}" | awk '{print $1}')
-            test "${actual}" = "${expected}"
-          }
-          tag_commit martin-beck/agent-workflow-tui v0.1.2 5f68f8e86586a4c8036a180eb35c42fab82df843
-          tag_commit martin-beck/agent-workflow-coordinator v0.3.14 2666c9d7a56ce02340e1b4b09344a227936a34cf
-          tag_commit martin-beck/agent-workflow-guidance v0.1.0 9b044ebc930751ba23c60ecd7d8f7c30ca631609
-          tag_commit martin-beck/agent-workflow-quality v0.35.0-bridge.1 8ec460ec99baf8061d1644a2532b5b9beb47b75b
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4.1.7
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: '3.x'
+      - name: Run compatibility probe
+        run: python3 tools/check_compatibility.py --report compatibility-report.json
+      - name: Run hostile-input tests
+        run: python3 tests/test_compatibility.py -v
+      - name: Publish compatibility report
+        if: always()
+        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        with:
+          name: compatibility-report
+          path: compatibility-report.json
+          if-no-files-found: error
