@@ -27,7 +27,7 @@ jobs:
           martin-beck/agent-workflow-coordinator da7faa08a40513254179429c9c6d5c43e980ea48
           martin-beck/agent-workflow-guidance 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
-          martin-beck/agent-workflow-runtime 5957a9b0cd7fba48a921821c4029dd44168dd9c3
+          martin-beck/agent-workflow-runtime 1f1ca631f97229c55d248e91ca0d081cff7b7b0c
           PINS
       - name: Verify release tags used by the lock
         shell: bash
@@ -43,4 +43,4 @@ jobs:
           tag_commit martin-beck/agent-workflow-coordinator v0.3.22 da7faa08a40513254179429c9c6d5c43e980ea48
           tag_commit martin-beck/agent-workflow-guidance v0.1.2 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           tag_commit martin-beck/agent-workflow-quality v0.35.0-bridge.1 8ec460ec99baf8061d1644a2532b5b9beb47b75b
-          tag_commit martin-beck/agent-workflow-runtime v0.1.5 5957a9b0cd7fba48a921821c4029dd44168dd9c3
+          tag_commit martin-beck/agent-workflow-runtime v0.1.6 1f1ca631f97229c55d248e91ca0d081cff7b7b0c
