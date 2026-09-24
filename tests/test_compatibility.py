@@ -16,7 +16,7 @@ class CompatibilityProbeTests(unittest.TestCase):
         self.assertEqual(len(value["contracts"]), 4)
 
     def test_tampered_pin_is_rejected(self):
-        tampered = MANIFEST.replace("b33fb5a757e8ba97d525adbb9eae6a9a0b7d8b01", "0" * 40)
+        tampered = MANIFEST.replace("3ceee11e302be267f8c0e83cfbac47345e8b8162", "0" * 40)
         value = check_compatibility.parse_manifest(tampered)
 
         def reject(pin, contracts):
