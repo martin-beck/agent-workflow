@@ -12,9 +12,21 @@ jobs:
   lock:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4.1.7
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: '3.x'
       - name: Validate reviewed compatibility lock
-        run: python3 tools/check_compatibility.py
+        run: python3 tools/check_compatibility.py --report compatibility-report.json
+      - name: Run hostile-input tests
+        run: python3 tests/test_compatibility.py -v
+      - name: Publish compatibility report
+        if: always()
+        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        with:
+          name: compatibility-report
+          path: compatibility-report.json
+          if-no-files-found: error
       - name: Verify immutable source pins exist
         shell: bash
         run: |
@@ -23,7 +35,7 @@ jobs:
             curl --fail --silent --show-error --location \
               "https://api.github.com/repos/${repository}/commits/${commit}" >/dev/null
           done <<'PINS'
-          martin-beck/agent-workflow-ui f89103b70d18642bef9e785214eb5ea790a53627
+          martin-beck/agent-workflow-ui 3ceee11e302be267f8c0e83cfbac47345e8b8162
           martin-beck/agent-workflow-coordinator da7faa08a40513254179429c9c6d5c43e980ea48
           martin-beck/agent-workflow-guidance 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
@@ -39,7 +51,7 @@ jobs:
             test -n "${actual}" || actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}" | awk '{print $1}')
             test "${actual}" = "${expected}"
           }
-          tag_commit martin-beck/agent-workflow-ui v0.6.0 f89103b70d18642bef9e785214eb5ea790a53627
+          tag_commit martin-beck/agent-workflow-ui v0.6.2 3ceee11e302be267f8c0e83cfbac47345e8b8162
           tag_commit martin-beck/agent-workflow-coordinator v0.3.22 da7faa08a40513254179429c9c6d5c43e980ea48
           tag_commit martin-beck/agent-workflow-guidance v0.1.2 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           tag_commit martin-beck/agent-workflow-quality v0.35.0-bridge.1 8ec460ec99baf8061d1644a2532b5b9beb47b75b
