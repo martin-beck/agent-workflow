@@ -13,7 +13,7 @@ class CompatibilityProbeTests(unittest.TestCase):
     def test_manifest_has_all_pins_and_contracts(self):
         value = check_compatibility.parse_manifest(MANIFEST)
         self.assertEqual(set(value["pins"]), check_compatibility.PROJECTS)
-        self.assertEqual(len(value["contracts"]), 4)
+        self.assertEqual(len(value["contracts"]), 6)
 
     def test_tampered_pin_is_rejected(self):
         tampered = MANIFEST.replace("72162d786df53a09e45736e1716288d721e0e751", "0" * 40)

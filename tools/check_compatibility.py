@@ -83,8 +83,8 @@ def check() -> None:
             "da7faa08a40513254179429c9c6d5c43e980ea48",
         ),
         "agent-workflow-guidance": (
-            "v0.1.2",
-            "4cc6fdebed62cfb8d2f05224d8438f2e0da6e035",
+            "v0.1.3",
+            "79ae41edd7879d72f014a77499caf397a4cd46d7",
         ),
         "agent-workflow-quality": (
             "v0.35.0-bridge.1",

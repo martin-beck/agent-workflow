@@ -7,7 +7,7 @@ cross-platform qualification matrix.
 | Component | Release | Immutable commit |
 | --- | --- | --- |
 | agent-workflow-ui | v0.6.4 | `72162d786df53a09e45736e1716288d721e0e751` |
-| agent-workflow-guidance | v0.1.2 | `4cc6fdebed62cfb8d2f05224d8438f2e0da6e035` |
+| agent-workflow-guidance | v0.1.3 | `79ae41edd7879d72f014a77499caf397a4cd46d7` |
 | agent-workflow-coordinator | v0.3.22 | `da7faa08a40513254179429c9c6d5c43e980ea48` |
 | agent-workflow-quality | v0.35.0-bridge.1 | `8ec460ec99baf8061d1644a2532b5b9beb47b75b` |
 | agent-workflow-runtime | v0.1.9 | `023093ee429242121baf159dfccdad371ee4c867` |
