@@ -35,7 +35,7 @@ jobs:
             curl --fail --silent --show-error --location \
               "https://api.github.com/repos/${repository}/commits/${commit}" >/dev/null
           done <<'PINS'
-          martin-beck/agent-workflow-ui 3ceee11e302be267f8c0e83cfbac47345e8b8162
+          martin-beck/agent-workflow-ui 1c0fe3a4a1fd69a5166eeb628ad865d53122de0d
           martin-beck/agent-workflow-coordinator da7faa08a40513254179429c9c6d5c43e980ea48
           martin-beck/agent-workflow-guidance 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           martin-beck/agent-workflow-quality 8ec460ec99baf8061d1644a2532b5b9beb47b75b
@@ -51,7 +51,7 @@ jobs:
             test -n "${actual}" || actual=$(git ls-remote "https://github.com/${repository}.git" "refs/tags/${tag}" | awk '{print $1}')
             test "${actual}" = "${expected}"
           }
-          tag_commit martin-beck/agent-workflow-ui v0.6.2 3ceee11e302be267f8c0e83cfbac47345e8b8162
+          tag_commit martin-beck/agent-workflow-ui v0.6.3 1c0fe3a4a1fd69a5166eeb628ad865d53122de0d
           tag_commit martin-beck/agent-workflow-coordinator v0.3.22 da7faa08a40513254179429c9c6d5c43e980ea48
           tag_commit martin-beck/agent-workflow-guidance v0.1.2 4cc6fdebed62cfb8d2f05224d8438f2e0da6e035
           tag_commit martin-beck/agent-workflow-quality v0.35.0-bridge.1 8ec460ec99baf8061d1644a2532b5b9beb47b75b
